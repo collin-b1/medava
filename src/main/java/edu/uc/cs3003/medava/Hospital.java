@@ -1,1 +1,21 @@
 package edu.uc.cs3003.medava;
+
+public class Hospital {
+
+    private String name;
+
+    public Hospital(String hospitalName) {
+        name = hospitalName;
+    }
+
+    void receive(Transporter t) {
+        while (!t.goods.isEmpty()) {
+            Medicine unloaded = t.goods.remove(0);
+            System.out.printf("Receiving an %s.%n", unloaded.getMedicineName());
+        }
+    }
+
+    public String name() {
+        return name;
+    }
+}
