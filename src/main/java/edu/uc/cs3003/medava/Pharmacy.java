@@ -9,7 +9,11 @@ public class Pharmacy {
 
     public boolean send(Transporter t) {
         Medicine advil = new Medicine("Advil");
-        System.out.printf("Sending an %s.%n", advil.getMedicineName());
-        return t.goods.add(advil);
+        if (t.load(advil)) {
+            System.out.printf("Sending %s on the %s transporter.%n", advil.getMedicineName(), t.getTransporterName());
+            return true;
+        }
+        System.out.printf("Cannot load %s onto the %s transporter.%n", advil.getMedicineName(), t.getTransporterName());
+        return false;
     }
 }

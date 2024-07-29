@@ -9,9 +9,9 @@ public class Hospital {
     }
 
     void receive(Transporter t) {
-        while (!t.goods.isEmpty()) {
-            Medicine unloaded = t.goods.remove(0);
-            System.out.printf("Receiving an %s.%n", unloaded.getMedicineName());
+        while (!t.isEmpty()) {
+            Medicine unloaded = t.unload();
+            System.out.printf("Receiving %s off the %s transporter.%n", unloaded.getMedicineName(), t.getTransporterName());
         }
     }
 
