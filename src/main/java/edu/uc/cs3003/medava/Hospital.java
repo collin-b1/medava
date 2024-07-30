@@ -11,7 +11,8 @@ public class Hospital {
         name = hospitalName;
     }
 
-    void receive(Transporter t) {
+    // Old receive method using reflection
+    /*void receive(Transporter t) {
         while (!t.isEmpty()) {
             try {
                 Object unloaded = t.unload();
@@ -28,6 +29,18 @@ public class Hospital {
             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException |
                      InvocationTargetException e) {
                 // Don't do anything.
+            }
+        }
+    }*/
+
+    public void receive(Transporter t) {
+        while (!t.isEmpty()) {
+            Shippable unloaded = t.unload();
+            System.out.printf("Checking whether Hospital can receive %s.%n", unloaded.getMedicineName());
+            if (unloaded.getSchedule() != MedicineSchedule.Uncontrolled) {
+                System.out.printf("Hospital cannot receive controlled substances and %s is %s.%n", unloaded.getMedicineName(), unloaded.getSchedule().asString());
+            } else {
+                System.out.printf("Accepted a shipment of %s.%n", unloaded.getMedicineName());
             }
         }
     }
