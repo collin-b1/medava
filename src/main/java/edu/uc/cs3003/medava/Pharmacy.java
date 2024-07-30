@@ -32,6 +32,14 @@ public class Pharmacy {
             return false;
         }
 
+        Jarvik heart = new Jarvik("01j9a9lk71");
+        if (t.load(heart)) {
+            System.out.printf("Sending %s on the %s transporter.%n", heart.getMedicineName(), t.getTransporterName());
+        } else {
+            System.out.printf("Cannot load %s onto the %s transporter.%n", heart.getMedicineName(), t.getTransporterName());
+            return false;
+        }
+
         return true;
     }
 }
