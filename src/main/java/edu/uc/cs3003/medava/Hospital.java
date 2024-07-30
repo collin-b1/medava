@@ -38,7 +38,7 @@ public class Hospital {
             Shippable unloaded = t.unload();
             System.out.printf("Checking whether Hospital can receive %s.%n", unloaded.getMedicineName());
             if (unloaded.getSchedule() != MedicineSchedule.Uncontrolled) {
-                System.out.printf("Hospital cannot receive controlled substances and %s is %s.%n", unloaded.getMedicineName(), unloaded.getSchedule().asString());
+                System.out.printf("Hospital cannot receive controlled substances and %s is a %s.%n", unloaded.getMedicineName(), unloaded.getSchedule().asString());
             } else {
                 System.out.printf("Accepted a shipment of %s.%n", unloaded.getMedicineName());
             }
